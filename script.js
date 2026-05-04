@@ -6,7 +6,7 @@
 
 /* ============ FIREBASE CONFIG ============ */
 const FIREBASE_CONFIG = {
-  databaseURL: "https://bumdes-suwaluh-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  databaseURL: "https://bumdes-suwaluh-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 const DB_URL = FIREBASE_CONFIG.databaseURL;
 
