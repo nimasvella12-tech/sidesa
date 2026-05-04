@@ -6,7 +6,7 @@
 
 /* ============ FIREBASE CONFIG ============ */
 const FIREBASE_CONFIG = {
-  databaseURL: "https://bumdes-suwaluh-default-rtdb.firebaseio.com"
+  databaseURL: "https://bumdes-suwaluh-default-rtdb.asia-southeast1.firebasedatabase.app"
   // GANTI dengan URL Realtime Database Firebase Anda!
   // Cara: console.firebase.google.com → Realtime Database → salin URL
 };
