@@ -1,12 +1,12 @@
 /* =====================================================
    BUMDes Suwaluh Mandiri Sejahtera — script.js
-   Firebase: laporan + investor + saran (bisa dilihat semua user)
+   Firebase: laporan + investor (bisa dilihat semua user)
    localStorage: reservasi, saran, modal pending (per-session)
    ===================================================== */
 
 /* ============ FIREBASE CONFIG ============ */
 const FIREBASE_CONFIG = {
-  databaseURL: "https://bumdes-suwaluh-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  databaseURL: "https://bumdes-suwaluh-default-rtdb.firebaseio.com"
   // GANTI dengan URL Realtime Database Firebase Anda!
   // Cara: console.firebase.google.com → Realtime Database → salin URL
 };
