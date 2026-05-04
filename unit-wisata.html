@@ -226,7 +226,7 @@
       </div>
       <div class="admin-tab-content" id="admin-tab-reservasi">
         <h4 style="margin-bottom:1rem;color:var(--green-dark)">📋 Daftar Reservasi Masuk</h4>
-        <div style="overflow-x:auto"><table class="admin-table"><thead><tr><th>No</th><th>Nama</th><th>Wisata</th><th>Tgl Kunjungan</th><th>Tiket</th><th>Bukti</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="adminReservasiTableBody"></tbody></table></div>
+        <div style="overflow-x:auto"><table class="admin-table"><thead><tr><th>No</th><th>Nama</th><th>Wisata</th><th>Tgl</th><th>Tiket</th><th>Bukti</th><th>No Invoice</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="adminReservasiTableBody"></tbody></table></div>
       </div>
       <div class="admin-tab-content" id="admin-tab-investor">
         <button class="admin-btn-add" onclick="openAdminInvestorForm()">+ Tambah Investor</button>
@@ -283,27 +283,39 @@
       </div>
             <div class="admin-tab-content" id="admin-tab-laporan-upload">
         <h4 style="margin-bottom:.5rem;color:var(--green-dark)">📁 Kelola Laporan Keuangan</h4>
-        <p style="font-size:.82rem;color:var(--gray-500);margin-bottom:1rem">Tambahkan laporan dengan link Google Drive. Pastikan file sudah di-share <strong>"Anyone with the link can view"</strong>.</p>
-        <details style="margin-bottom:1rem;background:var(--green-pale);border-radius:8px;padding:.8rem 1rem;font-size:.82rem">
-          <summary style="font-weight:600;color:var(--green-dark);cursor:pointer">📖 Cara mendapatkan link Google Drive</summary>
-          <ol style="margin-top:.6rem;padding-left:1.2rem;color:var(--gray-700);line-height:1.8">
-            <li>Upload file PDF ke <a href="https://drive.google.com" target="_blank" style="color:var(--green-main)">Google Drive</a></li>
-            <li>Klik kanan file → <strong>Share</strong> (Bagikan)</li>
-            <li>Ubah akses ke <strong>"Anyone with the link"</strong></li>
-            <li>Klik <strong>Copy link</strong> → paste di kolom di bawah</li>
-          </ol>
-        </details>
+        <!-- Status Firebase -->
+        <div id="firebaseStatusInfo"></div>
+        <p style="font-size:.82rem;color:var(--gray-500);margin-bottom:1rem">
+          📌 <strong>Cara pakai:</strong> Upload PDF ke Google Drive → klik kanan file → <em>Bagikan</em> → <em>Siapa saja yang punya link</em> → salin link → tempel di bawah.
+        </p>
         <div id="adminLaporanUploadList"></div>
         <div class="admin-form" style="margin-top:1rem">
           <div class="admin-form-row">
-            <div class="admin-form-group"><label>Nama Laporan</label><input type="text" id="adminLaporanNama" placeholder="cth: Laporan Laba Rugi 2025" /></div>
-            <div class="admin-form-group"><label>Tahun</label><select id="adminLaporanTahun"><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option></select></div>
-            <div class="admin-form-group"><label>Jenis Laporan</label><select id="adminLaporanJenis"><option>Laba Rugi</option><option>Neraca</option><option>Arus Kas</option><option>Perubahan Ekuitas</option><option>Catatan Atas Laporan</option></select></div>
+            <div class="admin-form-group">
+              <label>Nama Laporan</label>
+              <input type="text" id="adminLaporanNama" placeholder="Laporan Laba Rugi 2025" />
+            </div>
+            <div class="admin-form-group">
+              <label>Tahun</label>
+              <select id="adminLaporanTahun">
+                <option value="2025">2025</option><option value="2024">2024</option>
+                <option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option>
+              </select>
+            </div>
+            <div class="admin-form-group">
+              <label>Jenis Laporan</label>
+              <select id="adminLaporanJenis">
+                <option>Laba Rugi</option><option>Neraca</option><option>Arus Kas</option>
+                <option>Perubahan Ekuitas</option><option>Catatan Atas Laporan</option>
+              </select>
+            </div>
           </div>
           <div class="admin-form-group">
-            <label>🔗 Link Google Drive (PDF)</label>
-            <input type="url" id="adminLaporanDriveLink" placeholder="https://drive.google.com/file/d/xxxx/view?usp=sharing" oninput="onDriveLinkChange(this)" style="font-size:.85rem" />
-            <div id="adminDriveLinkInfo" style="margin-top:.35rem"></div>
+            <label>🔗 Link Google Drive PDF</label>
+            <input type="url" id="adminLaporanDriveLink"
+              placeholder="https://drive.google.com/file/d/xxxxx/view?usp=sharing"
+              oninput="validateDriveLink(this.value)" style="font-size:.85rem" />
+            <div id="adminDriveLinkInfo" style="margin-top:.4rem;min-height:1.2rem"></div>
           </div>
           <button class="admin-btn-add" onclick="saveAdminLaporan()">💾 Simpan Laporan</button>
         </div>
